@@ -1,7 +1,10 @@
 import { useState } from "react";
 
+import ReportTable from "./ReportTable";
+
 export default function Main() {
   const [formdata, setFormdata] = useState({});
+  const [show, setShow] = useState(true);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -12,6 +15,7 @@ export default function Main() {
       avg: event.target.avg.value,
     };
     setFormdata(formInputs);
+    setShow(false);
   };
   return (
     <main className="flex flex-1 flex-col items-center justify-between p-24">
@@ -41,15 +45,19 @@ export default function Main() {
           </div>
         </form>
       </div>
-      <div>
-        <ul>
-          <li>Location : {formdata.location}</li>
-          <li>Minimum Customers per Hour: {formdata.min}</li>
-          <li>Maximum Customers per Hour: {formdata.max}</li>
-          <li>Average Cookie per Sale: {formdata.avg}</li>
-        </ul>
-      </div>
-      <p className="text-xl font-medium">report Table Coming soon ...</p>
+
+      {show ? (
+        <p className="text-xl font-medium my-20">
+          report Table Coming soon ...
+        </p>
+      ) : (
+        <div>
+          <div className="my-10 py-10 text-center ">
+            {JSON.stringify(formdata)}{" "}
+          </div>
+          <ReportTable />
+        </div>
+      )}
     </main>
   );
 }
