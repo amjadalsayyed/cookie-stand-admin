@@ -46,9 +46,7 @@ export default function Main({ formdata, setFormdata }) {
       </div>
 
       {formdata.length === 0 ? (
-        <p className="text-xl font-medium my-20">
-          report Table Coming soon ...
-        </p>
+        <h2 className="text-xl font-medium my-20">No Cookie Stands Availabl</h2>
       ) : (
         <div className="my-10 py-10 text-center ">
           {/* <div className="my-10 py-10 text-center ">
