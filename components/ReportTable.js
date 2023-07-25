@@ -1,8 +1,8 @@
 import data, { hours, totals } from "@/data";
 
-export default function ReportTable() {
+export default function ReportTable({ formdata }) {
   return (
-    <table className="p-20">
+    <table className="pt-20">
       <thead>
         <tr className="bg-green-600">
           <th className="px-5">Location</th>
@@ -13,29 +13,23 @@ export default function ReportTable() {
         </tr>
       </thead>
       <tbody>
-        {data.map((x, indx) => {
-          return (
-            <tr
-              key={x}
-              className={indx % 2 === 0 ? "bg-green-400" : "bg-green-500"}
-            >
-              <td className="border border-black py-2 text-center">
-                {x.location}
-              </td>
-              {x.time.map((hour) => (
-                <td className="border border-black py-2 text-center" key={hour}>
-                  {hour}
-                </td>
-              ))}
-            </tr>
-          );
-        })}
+        {formdata.map((item, indx) => (
+          <tr className={indx % 2 === 0 ? "bg-green-400" : "bg-green-500"}>
+            <td className="border border-black py-2 text-center">
+              {item.location}
+            </td>
+            {data.map((i) => (
+              <td className="border border-black py-2 text-center">{i}</td>
+            ))}
+          </tr>
+        ))}
       </tbody>
       <tfoot>
         <tr className="bg-green-600">
-          {totals.map((y) => (
+          <td className="border border-black text-center font-bold">Totals</td>
+          {data.map((y) => (
             <td className="border border-black text-center font-bold" key={y}>
-              {y}
+              {y * formdata.length}
             </td>
           ))}
         </tr>
