@@ -19,7 +19,10 @@ export default function ReportTable({ formdata, setFormdata }) {
       </thead>
       <tbody>
         {formdata.map((item, indx) => (
-          <tr className={indx % 2 === 0 ? "bg-green-400" : "bg-green-500"}>
+          <tr
+            className={indx % 2 === 0 ? "bg-green-400" : "bg-green-500"}
+            key={Math.random()}
+          >
             <td className="flex justify-between p-5 border border-black py-2 text-center">
               <p>{item.location}</p>
               <button onClick={() => handleDelete(indx)}>
@@ -27,7 +30,12 @@ export default function ReportTable({ formdata, setFormdata }) {
               </button>
             </td>
             {data.map((i) => (
-              <td className="border border-black py-2 text-center">{i}</td>
+              <td
+                className="border border-black py-2 text-center"
+                key={Math.random()}
+              >
+                {i}
+              </td>
             ))}
           </tr>
         ))}
