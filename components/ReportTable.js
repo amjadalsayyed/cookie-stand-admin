@@ -12,7 +12,7 @@ export default function ReportTable({ formdata, setFormdata }) {
         <tr className="bg-green-600">
           <th className="px-5 w-52">Location</th>
           {hours.map((hour) => (
-            <th className="px-5">{hour}</th>
+            <th className="px-5" key={Math.random()}>{hour}</th>
           ))}
           <th className="px-5">Totals</th>
         </tr>
@@ -46,7 +46,7 @@ export default function ReportTable({ formdata, setFormdata }) {
           {data.map((y, indx) => (
             <td
               className="border border-black text-center font-bold"
-              key={indx}
+              key={Math.random()}
             >
               {y * formdata.length}
             </td>
